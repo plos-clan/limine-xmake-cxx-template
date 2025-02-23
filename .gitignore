@@ -1,7 +1,13 @@
 # Xmake cache
 .xmake/
 build/
+cmake-build-debug/
+cmake-build-release/
+cmake-build-minsizerel/
+cmake-build-relwithdebinfo/
+cmake-build-default/
 CMakeLists.txt
+compile_commands.json
 
 # IDE Config
 .idea/

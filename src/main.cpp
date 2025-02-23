@@ -17,13 +17,15 @@ static volatile LIMINE_REQUESTS_START_MARKER
 __attribute__((used, section(".limine_requests_end")))
 static volatile LIMINE_REQUESTS_END_MARKER
 
-void _start(void) {
+
+extern "C"
+[[noreturn]] void kmain(void) {
     if (LIMINE_BASE_REVISION_SUPPORTED == false) {
         for (;;) __asm__ ("hlt");
     }
 
-    if (framebuffer_request.response == NULL
-     || framebuffer_request.response->framebuffer_count < 1) {
+    if (framebuffer_request.response == nullptr
+        || framebuffer_request.response->framebuffer_count < 1) {
         for (;;) __asm__ ("hlt");
     }
 
@@ -33,7 +35,7 @@ void _start(void) {
     uint64_t height = framebuffer->height;
 
     uint64_t stride = framebuffer->pitch / 4;
-    uint32_t *buffer = framebuffer->address;
+    uint32_t *buffer = static_cast<uint32_t *>(framebuffer->address);
 
     for (size_t y = 0; y < height; y++) {
         for (size_t x = 0; x < width; x++) {
