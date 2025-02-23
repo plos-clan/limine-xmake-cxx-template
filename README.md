@@ -1,6 +1,6 @@
-# Limine C Xmake Template
+# Limine C++ Xmake Template
 
-This repository contains a basic x86-64 kernel in C using Limine.
+This repository contains a basic x86-64 kernel in C++ using Limine.
 
 Only UEFI is supported, because BIOS related files are not included.
 
