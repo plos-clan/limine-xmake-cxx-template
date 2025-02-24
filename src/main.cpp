@@ -29,7 +29,7 @@ extern "C"
         for (;;) __asm__ ("hlt");
     }
 
-    struct limine_framebuffer *framebuffer = framebuffer_request.response->framebuffers[0];
+    limine_framebuffer *framebuffer = framebuffer_request.response->framebuffers[0];
 
     uint64_t width = framebuffer->width;
     uint64_t height = framebuffer->height;

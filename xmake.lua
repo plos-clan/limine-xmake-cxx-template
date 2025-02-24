@@ -9,12 +9,14 @@ set_optimize("fastest")
 set_policy("run.autobuild", true)
 set_policy("check.auto_ignore_flags", false)
 
-add_cflags("-target x86_64-freestanding")
+add_cxflags("-target x86_64-freestanding")
 add_ldflags("-target x86_64-freestanding")
 
-add_cflags("-mno-80387", "-mno-mmx", "-mno-sse", "-mno-sse2", "-msoft-float","-nostdinc")
-add_cflags("-mcmodel=kernel")
+add_cxflags("-mno-80387", "-mno-mmx", "-mno-sse", "-mno-sse2", "-msoft-float","-nostdinc")
+add_cxflags("-mcmodel=kernel")
 add_ldflags("-static","-nostdlib")
+
+add_cxflags("-mno-red-zone", "-fno-exceptions", "-fno-rtti","-m64")
 
 target("kernel")
     set_kind("binary")
